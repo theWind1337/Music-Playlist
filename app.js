@@ -203,17 +203,19 @@ function removeSongFromPlaylist(song) {
 }
 
 function generatePagination(songs) {
-	const totalPages = Math.ceil(songs.lenght / songsPerPage);
+	const totalPages = Math.ceil(songs.length / songsPerPage);
+
 	pagination.innerHTML = '';
-	for ( let  i = 0; i <= totalPages; i++) {
+
+	for (let i = 1; i <= totalPages; i++) {
 		const li = document.createElement('li');
 		li.innerHTML = `<a class="page-link ${i === 1 ? 'active' : ''}" id="page-link-${i}" href="#">${i}</a>`;
 		pagination.append(li);
 
 		li.addEventListener('click', () => {
 			const activeElement = document.getElementsByClassName('page-link active');
-			if(activeElement) {
-				activeElement[0].classList.remove('active');
+			if (activeElement) {
+				activeElement[0].classList.remove('active')
 			}
 			currentPage = i;
 			renderTableData(songs);
